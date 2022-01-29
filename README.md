@@ -8,3 +8,7 @@ The example contains:
 + A Plumber script that imports this model and provides an endpoint for scoring new observations
 + Basic unit testing examples
 + Resources for deploying via Docker Compose
+
+## Notes:
+
+First, we build a simple [linear model](linear_model.R) using the tidymodels framework. The resulting workflow and model object are saved in [the data directory](/data) 
