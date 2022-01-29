@@ -1,0 +1,21 @@
+version: '2'
+services:
+  v1:
+    image: inducosols/plumber-api
+    build: ./v1/
+    volumes:
+     - ./data:/data
+     - ./v1:/app
+     - ./functions:/functions
+    command: /app/plumber.R
+    restart: always
+    mem_limit: 800m
+  nginx:
+    image: nginx:1.9
+    ports:
+     - "80:80"
+    volumes:
+     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: always
+    depends_on:
+     - v1
