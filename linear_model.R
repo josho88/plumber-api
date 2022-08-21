@@ -62,3 +62,16 @@ wf_fit
 
 # save the workflow
 saveRDS(wf_fit, './data/wf_fit.rds')
+
+# additionally, save the workflow to an s3 bucket using the 'pins' library
+
+board <- 
+  board_s3(
+    bucket = "airfinity-datascience-staging", 
+    access_key = Sys.getenv('AWS_ACCESS_KEY_ID'),
+    secret_access_key = Sys.getenv('AWS_SECRET_ACCESS_KEY')
+  )
+
+board %>% 
+  pin_write(wf_fit, name = 'mpg-predict-model', type = 'rds')
+

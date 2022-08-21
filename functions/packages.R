@@ -21,4 +21,5 @@
 
 library(tidyverse)
 library(tidymodels)
+library(pins)
 

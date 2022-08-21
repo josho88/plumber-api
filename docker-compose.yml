@@ -1,7 +1,7 @@
 version: '2'
 services:
   v1:
-    image: inducosols/plumber-api
+    image: inducosols/r-api-template
     build: ./v1/
     volumes:
      - ./data:/data
@@ -10,6 +10,7 @@ services:
     command: /app/plumber.R
     restart: always
     mem_limit: 800m
+    env_file: .Renviron
   nginx:
     image: nginx:1.9
     ports:
